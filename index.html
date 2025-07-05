@@ -67,7 +67,7 @@
             color: var(--lg-text);
             background: transparent;
             border-radius: 2rem;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(52, 152, 219, 0.15);
             overflow: hidden;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 0 6px rgba(0, 0, 0, 0.05);
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 2.2);
@@ -114,6 +114,25 @@
                 inset 0 2px 8px rgba(255, 255, 255, 0.2);
         }
 
+        .glass-specular-subtle {
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+            border-radius: inherit;
+            overflow: hidden;
+            background: linear-gradient(180deg, 
+                rgba(255, 255, 255, 0.15) 0%, 
+                rgba(255, 255, 255, 0.04) 20%, 
+                rgba(255, 255, 255, 0.02) 40%, 
+                rgba(255, 255, 255, 0.02) 60%, 
+                rgba(255, 255, 255, 0.04) 80%, 
+                rgba(255, 255, 255, 0.12) 100%);
+            box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.4),
+                inset 0 0 5px rgba(255, 255, 255, 0.3),
+                inset 0 -2px 8px rgba(255, 255, 255, 0.08),
+                inset 0 2px 8px rgba(255, 255, 255, 0.1);
+        }
+
         .glass-content {
             position: relative;
             z-index: 3;
@@ -146,7 +165,7 @@
             <nav class="glass-container">
                 <div class="glass-filter"></div>
                 <div class="glass-overlay"></div>
-                <div class="glass-specular"></div>
+                <div class="glass-specular-subtle"></div>
                 <div class="glass-content glass-content--nav">
                     <div class="logo font-bold text-2xl">Ecoluz</div>
                     <div class="nav-links hidden md:block">
