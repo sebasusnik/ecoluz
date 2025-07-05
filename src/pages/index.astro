@@ -1,6 +1,6 @@
 ---
 import { ArrowUp, Lightbulb, Building, HelpCircle, Mail } from "lucide-astro";
-import "../styles/global.css";
+import Layout from "../layouts/Layout.astro";
 import HeroSection from "../components/HeroSection.astro";
 import ProductSection from "../components/ProductSection.astro";
 import HowItWorksSection from "../components/HowItWorksSection.astro";
@@ -11,12 +11,7 @@ import FaqSection from "../components/FaqSection.astro";
 import ContactSection from "../components/ContactSection.astro";
 ---
 
-<html lang="es">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>ecoluz - Diseño Moderno con Tailwind CSS</title>
-	</head>
+<Layout>
 	<body class="bg-[#f4f7f9] text-[#2c3e50] font-[Helvetica,Arial,sans-serif] overflow-x-hidden">
 		<div class="background-container fixed top-0 left-0 w-full h-full overflow-hidden -z-10">
 			<div
@@ -136,5 +131,5 @@ import ContactSection from "../components/ContactSection.astro";
 			</filter>
 		</svg>
 	</body>
-</html>
+</Layout>
 

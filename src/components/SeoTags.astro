@@ -1,0 +1,32 @@
+---
+import { SEO } from "astro-seo";
+
+export interface Props {
+	title?: string;
+	description?: string;
+}
+
+const {
+	title = "Ecoluz - Claraboyas Tubulares",
+	description = "Iluminación natural y sostenible para tu hogar o negocio con las claraboyas tubulares de Ecoluz. Ahorra energía y mejora tu bienestar.",
+} = Astro.props;
+---
+
+<SEO
+	title={title}
+	description={description}
+	openGraph={{
+		basic: {
+			title: title,
+			type: "website",
+			image: "/og-image.png",
+			url: "https://www.ecoluz.com.ar",
+		},
+	}}
+	twitter={{
+		card: "summary_large_image",
+		title: title,
+		description: description,
+		image: "/og-image.png",
+	}}
+/> 
