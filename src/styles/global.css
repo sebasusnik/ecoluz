@@ -1,3 +1,16 @@
+@import "tailwindcss";
+
+@theme {
+    --color-primary: oklch(63.3% 0.125 244);
+    --color-dark: oklch(35% 0.042 264);
+    --color-accent-pink: oklch(81.9% 0.082 23.32);
+    --color-accent-yellow: oklch(94.26% 0.038 88.45); 
+    --color-glass-30: oklch(100% 0 0 / 0.3);
+    --color-glass-50: oklch(100% 0 0 / 0.5);
+    --color-glass-75: oklch(100% 0 0 / 0.75);
+    --color-glass-80: oklch(100% 0 0 / 0.8);
+}
+
 @tailwind utilities;
 
 
@@ -150,5 +163,3 @@
     justify-content: space-between;
     padding: 0.75rem 1rem;
 }
-
-@import "tailwindcss";

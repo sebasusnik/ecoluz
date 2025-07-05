@@ -3,12 +3,6 @@ export default {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
   theme: {
     extend: {
-      colors: {
-        'lg-bg-color': 'rgba(255, 255, 255, 0.25)',
-        'lg-highlight': 'rgba(255, 255, 255, 0.75)',
-        'lg-text': '#2c3e50',
-        'lg-hover-glow': 'rgba(255, 255, 255, 0.4)',
-      },
       animation: {
         'move': 'move 35s infinite alternate',
         'move-reverse': 'move 40s infinite alternate-reverse',
