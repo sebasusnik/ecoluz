@@ -290,17 +290,29 @@
         const navItems = document.querySelectorAll('.nav-item');
         const sections = document.querySelectorAll('section[id]');
 
+        // Mapeo de secciones a nav items (incluyendo secciones intermedias)
+        const sectionToNavMap = {
+            'producto': 'producto',
+            'funciona': 'producto',  // Asociar "¿Cómo funciona?" con Producto
+            'specs': 'producto',     // Asociar "Información Técnica" con Producto
+            'about': 'about',
+            'testimonios': 'about',  // Asociar "Testimonios" con Empresa
+            'faq': 'faq',
+            'contacto': 'contacto'
+        };
+
         // Configurar Intersection Observer
         const observerOptions = {
             root: null,
-            rootMargin: '-20% 0px -60% 0px',
-            threshold: 0.1
+            rootMargin: '-30% 0px -50% 0px',
+            threshold: 0.2
         };
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const sectionId = entry.target.id;
+                    const navTarget = sectionToNavMap[sectionId];
                     
                     // Remover clase active de todos los items
                     navItems.forEach(item => {
@@ -308,9 +320,11 @@
                     });
                     
                     // Agregar clase active al item correspondiente
-                    const activeItem = document.querySelector(`[data-target="${sectionId}"]`);
-                    if (activeItem) {
-                        activeItem.classList.add('active');
+                    if (navTarget) {
+                        const activeItem = document.querySelector(`[data-target="${navTarget}"]`);
+                        if (activeItem) {
+                            activeItem.classList.add('active');
+                        }
                     }
                 }
             });
