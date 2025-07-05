@@ -7,6 +7,14 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     <style>
+        /* Glass effect variables */
+        :root {
+            --lg-bg-color: rgba(255, 255, 255, 0.25);
+            --lg-highlight: rgba(255, 255, 255, 0.75);
+            --lg-text: #2c3e50;
+            --lg-hover-glow: rgba(255, 255, 255, 0.4);
+        }
+
         /* Estilos personalizados que no pueden ser replicados fácilmente con Tailwind */
         @keyframes move {
             from {
@@ -50,6 +58,79 @@
         .nav-item.active i {
             color: #3498db;
         }
+
+        /* Glass effect styles */
+        .glass-container {
+            position: relative;
+            display: flex;
+            font-weight: 600;
+            color: var(--lg-text);
+            background: transparent;
+            border-radius: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 0 6px rgba(0, 0, 0, 0.05);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 2.2);
+        }
+
+        .glass-filter {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            backdrop-filter: blur(2px);
+            filter: url(#lg-dist);
+            isolation: isolate;
+        }
+
+        .glass-overlay {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            background: linear-gradient(180deg, 
+                rgba(255, 255, 255, 0.28) 0%, 
+                rgba(255, 255, 255, 0.22) 25%, 
+                rgba(255, 255, 255, 0.2) 50%, 
+                rgba(255, 255, 255, 0.22) 75%, 
+                rgba(255, 255, 255, 0.26) 100%);
+            backdrop-filter: blur(6px);
+        }
+
+        .glass-specular {
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+            border-radius: inherit;
+            overflow: hidden;
+            background: linear-gradient(180deg, 
+                rgba(255, 255, 255, 0.3) 0%, 
+                rgba(255, 255, 255, 0.08) 20%, 
+                rgba(255, 255, 255, 0.05) 40%, 
+                rgba(255, 255, 255, 0.05) 60%, 
+                rgba(255, 255, 255, 0.08) 80%, 
+                rgba(255, 255, 255, 0.25) 100%);
+            box-shadow: inset 1px 1px 0 var(--lg-highlight),
+                inset 0 0 5px var(--lg-highlight),
+                inset 0 -2px 8px rgba(255, 255, 255, 0.15),
+                inset 0 2px 8px rgba(255, 255, 255, 0.2);
+        }
+
+        .glass-content {
+            position: relative;
+            z-index: 3;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            padding: 1rem 2rem;
+        }
+
+        .glass-content--nav {
+            justify-content: space-between;
+        }
+
+        .glass-content--mobile-nav {
+            justify-content: space-between;
+            padding: 0.75rem 1rem;
+        }
     </style>
 </head>
 <body class="bg-[#f4f7f9] text-[#2c3e50] font-[Helvetica,Arial,sans-serif] overflow-x-hidden">
@@ -62,13 +143,18 @@
 
     <div class="page-wrapper relative z-[2]">
         <header class="sticky top-5 mx-5 z-10">
-            <nav class="flex justify-between items-center py-4 px-8 bg-[rgba(255,255,255,0.7)] backdrop-blur-md border border-[rgba(255,255,255,0.3)] rounded-full shadow-lg">
-                <div class="logo font-bold text-2xl">Ecoluz</div>
-                <div class="nav-links hidden md:block">
-                    <a href="#producto" class="ml-5 font-medium transition-colors hover:text-[#3498db]">El Producto</a>
-                    <a href="#about" class="ml-5 font-medium transition-colors hover:text-[#3498db]">Nosotros</a>
-                    <a href="#faq" class="ml-5 font-medium transition-colors hover:text-[#3498db]">Preguntas</a>
-                    <a href="#contacto" class="ml-5 font-medium transition-colors hover:text-[#3498db]">Contacto</a>
+            <nav class="glass-container">
+                <div class="glass-filter"></div>
+                <div class="glass-overlay"></div>
+                <div class="glass-specular"></div>
+                <div class="glass-content glass-content--nav">
+                    <div class="logo font-bold text-2xl">Ecoluz</div>
+                    <div class="nav-links hidden md:block">
+                        <a href="#producto" class="ml-5 font-medium transition-colors hover:text-[#3498db]">El Producto</a>
+                        <a href="#about" class="ml-5 font-medium transition-colors hover:text-[#3498db]">Nosotros</a>
+                        <a href="#faq" class="ml-5 font-medium transition-colors hover:text-[#3498db]">Preguntas</a>
+                        <a href="#contacto" class="ml-5 font-medium transition-colors hover:text-[#3498db]">Contacto</a>
+                    </div>
                 </div>
             </nav>
         </header>
@@ -241,23 +327,28 @@
 
     <!-- Navegación flotante inferior para mobile -->
     <nav class="fixed bottom-5 left-5 right-5 z-50 md:hidden">
-        <div class="flex justify-between items-center py-3 px-4 bg-[rgba(255,255,255,0.7)] backdrop-blur-md border border-[rgba(255,255,255,0.3)] rounded-full shadow-lg">
-            <a href="#producto" class="nav-item flex flex-col items-center p-2 transition-all duration-300 hover:text-[#3498db]" data-target="producto">
-                <i data-lucide="lightbulb" class="w-5 h-5 mb-1"></i>
-                <span class="text-xs font-medium">Producto</span>
-            </a>
-            <a href="#about" class="nav-item flex flex-col items-center p-2 transition-all duration-300 hover:text-[#3498db]" data-target="about">
-                <i data-lucide="building" class="w-5 h-5 mb-1"></i>
-                <span class="text-xs font-medium">Empresa</span>
-            </a>
-            <a href="#faq" class="nav-item flex flex-col items-center p-2 transition-all duration-300 hover:text-[#3498db]" data-target="faq">
-                <i data-lucide="help-circle" class="w-5 h-5 mb-1"></i>
-                <span class="text-xs font-medium">FAQ</span>
-            </a>
-            <a href="#contacto" class="nav-item flex flex-col items-center p-2 transition-all duration-300 hover:text-[#3498db]" data-target="contacto">
-                <i data-lucide="mail" class="w-5 h-5 mb-1"></i>
-                <span class="text-xs font-medium">Contacto</span>
-            </a>
+        <div class="glass-container">
+            <div class="glass-filter"></div>
+            <div class="glass-overlay"></div>
+            <div class="glass-specular"></div>
+            <div class="glass-content glass-content--mobile-nav">
+                <a href="#producto" class="nav-item flex flex-col items-center p-2 transition-all duration-300 hover:text-[#3498db]" data-target="producto">
+                    <i data-lucide="lightbulb" class="w-5 h-5 mb-1"></i>
+                    <span class="text-xs font-medium">Producto</span>
+                </a>
+                <a href="#about" class="nav-item flex flex-col items-center p-2 transition-all duration-300 hover:text-[#3498db]" data-target="about">
+                    <i data-lucide="building" class="w-5 h-5 mb-1"></i>
+                    <span class="text-xs font-medium">Empresa</span>
+                </a>
+                <a href="#faq" class="nav-item flex flex-col items-center p-2 transition-all duration-300 hover:text-[#3498db]" data-target="faq">
+                    <i data-lucide="help-circle" class="w-5 h-5 mb-1"></i>
+                    <span class="text-xs font-medium">FAQ</span>
+                </a>
+                <a href="#contacto" class="nav-item flex flex-col items-center p-2 transition-all duration-300 hover:text-[#3498db]" data-target="contacto">
+                    <i data-lucide="mail" class="w-5 h-5 mb-1"></i>
+                    <span class="text-xs font-medium">Contacto</span>
+                </a>
+            </div>
         </div>
     </nav>
 
@@ -289,6 +380,8 @@
         // Sistema de navegación activa
         const navItems = document.querySelectorAll('.nav-item');
         const sections = document.querySelectorAll('section[id]');
+        let clickedTarget = null;
+        let clickTime = 0;
 
         // Mapeo de secciones a nav items (incluyendo secciones intermedias)
         const sectionToNavMap = {
@@ -300,6 +393,18 @@
             'faq': 'faq',
             'contacto': 'contacto'
         };
+
+        // Función para actualizar navegación activa
+        function updateActiveNav(targetId) {
+            navItems.forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            const activeItem = document.querySelector(`[data-target="${targetId}"]`);
+            if (activeItem) {
+                activeItem.classList.add('active');
+            }
+        }
 
         // Configurar Intersection Observer
         const observerOptions = {
@@ -314,16 +419,23 @@
                     const sectionId = entry.target.id;
                     const navTarget = sectionToNavMap[sectionId];
                     
-                    // Remover clase active de todos los items
-                    navItems.forEach(item => {
-                        item.classList.remove('active');
-                    });
-                    
-                    // Agregar clase active al item correspondiente
                     if (navTarget) {
-                        const activeItem = document.querySelector(`[data-target="${navTarget}"]`);
-                        if (activeItem) {
-                            activeItem.classList.add('active');
+                        const timeSinceClick = Date.now() - clickTime;
+                        
+                        // Si acabamos de hacer click, solo permitir actualizaciones después de 800ms
+                        // o si llegamos exactamente al target clickeado
+                        if (clickedTarget === null || timeSinceClick > 800 || navTarget === clickedTarget) {
+                            updateActiveNav(navTarget);
+                            
+                            // Si llegamos al target clickeado, limpiar inmediatamente
+                            if (navTarget === clickedTarget) {
+                                clickedTarget = null;
+                            }
+                            
+                            // Limpiar el target después de un tiempo
+                            if (timeSinceClick > 1200) {
+                                clickedTarget = null;
+                            }
                         }
                     }
                 }
@@ -343,6 +455,14 @@
                 const targetSection = document.getElementById(targetId);
                 
                 if (targetSection) {
+                    // Registrar el click
+                    clickedTarget = targetId;
+                    clickTime = Date.now();
+                    
+                    // Actualizar inmediatamente la navegación activa
+                    updateActiveNav(targetId);
+                    
+                    // Hacer scroll suave
                     targetSection.scrollIntoView({
                         behavior: 'smooth',
                         block: 'start'
@@ -351,6 +471,15 @@
             });
         });
     </script>
+
+    <!-- SVG FILTER DEFINITION for glass effect -->
+    <svg style="display: none">
+        <filter id="lg-dist" x="0%" y="0%" width="100%" height="100%">
+            <feTurbulence type="turbulence" baseFrequency="0.002 0.035" numOctaves="2" seed="42" result="noise" />
+            <feGaussianBlur in="noise" stdDeviation="2" result="blurred" />
+            <feDisplacementMap in="SourceGraphic" in2="blurred" scale="45" xChannelSelector="R" yChannelSelector="G" />
+        </filter>
+    </svg>
 
 </body>
 </html>
