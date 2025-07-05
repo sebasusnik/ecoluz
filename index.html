@@ -3,77 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ecoluz - Diseño Moderno Completo</title>
+    <title>Ecoluz - Diseño Moderno con Tailwind CSS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        :root {
-            --primary-blue: #3498db;
-            --soft-pink: #f5b7b1;
-            --soft-yellow: #fdebd0;
-            --bg-color: #f4f7f9;
-            --text-color: #2c3e50;
-            --card-bg: rgba(255, 255, 255, 0.5);
-            --border-color: rgba(255, 255, 255, 0.3);
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            overflow-x: hidden;
-            line-height: 1.6;
-        }
-
-        /* --- FONDO LÍQUIDO ANIMADO Y SUTIL --- */
-        .background-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            z-index: -1;
-        }
-
-        .blob {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(100px);
-            opacity: 0.5; 
-        }
-
-        .blob1 {
-            width: 500px;
-            height: 500px;
-            background-color: var(--primary-blue);
-            top: -200px;
-            left: -200px;
-            animation: move 35s infinite alternate;
-        }
-
-        .blob2 {
-            width: 400px;
-            height: 400px;
-            background-color: var(--soft-pink);
-            bottom: -150px;
-            right: -150px;
-            animation: move 40s infinite alternate-reverse;
-        }
-        
-        .blob3 {
-            width: 350px;
-            height: 350px;
-            background-color: var(--soft-yellow);
-            bottom: 50px;
-            left: 100px;
-            animation: move 30s infinite alternate;
-        }
-        
+        /* Estilos personalizados que no pueden ser replicados fácilmente con Tailwind */
         @keyframes move {
             from {
                 transform: translate(0, 0) rotate(0deg) scale(1);
@@ -82,368 +15,208 @@
                 transform: translate(150px, 100px) rotate(120deg) scale(1.1);
             }
         }
-        
-        /* --- CONTENIDO PRINCIPAL --- */
-        .page-wrapper {
-            position: relative;
-            z-index: 2;
-        }
 
-        /* --- HEADER / NAVEGACIÓN --- */
-        header {
-            position: sticky;
-            top: 20px;
-            margin: 0 20px 20px 20px;
-            z-index: 10;
-        }
-        
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 30px;
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border: 1px solid var(--border-color);
-            border-radius: 50px;
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.08);
-        }
+        .blob1 { animation: move 35s infinite alternate; }
+        .blob2 { animation: move 40s infinite alternate-reverse; }
+        .blob3 { animation: move 30s infinite alternate; }
 
-        .logo {
-            font-weight: bold;
-            font-size: 1.5rem;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-color);
-            margin-left: 20px;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-        .nav-links a:hover {
-            color: var(--primary-blue);
-        }
-        
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
+        @keyframes scroll {
+            to {
+                transform: translateX(calc(-50% - 10px)); /* 10px es la mitad del gap */
             }
         }
-
-        /* --- SECCIONES --- */
-        .content-section {
-            padding: 100px 20px;
+        .scroller-inner {
+            animation: scroll 40s linear infinite;
         }
         
-        h2 {
-            font-size: clamp(2rem, 5vw, 2.8rem);
-            text-align: center;
-            margin-bottom: 60px;
-            font-weight: 700;
+        .faq-question::after {
+            content: '+';
+            transition: transform 0.3s ease;
         }
-
-        .hero-section {
-            text-align: center;
-            min-height: 80vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding-top: 0;
+        .faq-item.active .faq-question::after {
+            transform: rotate(45deg);
         }
-
-        .hero-section h1 {
-            font-size: clamp(2.5rem, 8vw, 4.5rem);
-            font-weight: 700;
-            line-height: 1.1;
-            margin-bottom: 20px;
-            max-width: 800px;
+        .faq-answer {
+            transition: max-height 0.5s ease, padding 0.5s ease;
         }
-
-        .hero-section p {
-            font-size: clamp(1rem, 3vw, 1.2rem);
-            max-width: 600px;
-            margin-bottom: 30px;
-            color: #555;
-        }
-
-        .cta-button {
-            background-color: var(--primary-blue);
-            color: var(--light-text);
-            text-decoration: none;
-            padding: 15px 35px;
-            border-radius: 50px;
-            font-weight: bold;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(52, 152, 219, 0.3);
-        }
-
-        /* --- SECCIÓN DE TARJETAS --- */
-        .cards-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .card {
-            background: var(--card-bg);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid var(--border-color);
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(31, 38, 135, 0.15);
-        }
-        .card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-        }
-
-        /* --- NUEVA SECCIÓN: CÓMO FUNCIONA --- */
-        .how-it-works-container {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            gap: 40px;
-            max-width: 1200px;
-            margin: 0 auto;
-            text-align: center;
-        }
-        .step {
-            flex: 1;
-            min-width: 250px;
-            max-width: 300px;
-        }
-        .step-icon {
-            width: 80px;
-            height: 80px;
-            margin-bottom: 20px;
-        }
-        .step h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-        }
-
-        /* --- NUEVA SECCIÓN: GALERÍA --- */
-        .gallery-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        .gallery-item {
-            background: var(--card-bg);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid var(--border-color);
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
-        }
-        .gallery-item img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            display: block;
-        }
-        .gallery-item p {
-            padding: 20px;
-            font-weight: bold;
-            text-align: center;
-        }
-        
-        /* --- NUEVA SECCIÓN: TRAYECTORIA --- */
-        .about-us-section {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid var(--border-color);
-            border-radius: 30px;
-            padding: 60px 40px;
-            max-width: 900px;
-            margin: 0 auto;
-            text-align: center;
-        }
-        .about-us-section p {
-            font-size: 1.1rem;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        /* --- FORMULARIO Y FOOTER --- */
-        .contact-section {
-            background-color: rgba(255, 255, 255, 0.8);
-            border-radius: 30px;
-            margin: 20px;
-        }
-        .contact-form {
-            max-width: 600px;
-            margin: 0 auto;
-            display: grid;
-            gap: 20px;
-        }
-        .contact-form input, .contact-form textarea {
-            width: 100%;
-            padding: 18px;
-            border-radius: 15px;
-            border: 1px solid #ddd;
-            background-color: #fff;
-            font-size: 1rem;
-            font-family: inherit;
-        }
-        .contact-form input:focus, .contact-form textarea:focus {
-            outline: none;
-            border-color: var(--primary-blue);
-            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
-        }
-        .contact-form button {
-            background-color: var(--primary-blue);
-            color: var(--light-text);
-            border: none;
-            padding: 18px;
-            border-radius: 15px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        .contact-form button:hover {
-            background-color: #2980b9;
-        }
-
-        footer {
-            text-align: center;
-            padding: 40px 20px;
-        }
-        
-        .footer-info {
-            font-size: 0.9rem;
-            color: #555;
-            margin-top: 10px;
-        }
-
     </style>
 </head>
-<body>
+<body class="bg-[#f4f7f9] text-[#2c3e50] font-[Helvetica,Arial,sans-serif] overflow-x-hidden">
 
-    <div class="background-container">
-        <div class="blob blob1"></div>
-        <div class="blob blob2"></div>
-        <div class="blob blob3"></div>
+    <div class="background-container fixed top-0 left-0 w-full h-full overflow-hidden -z-10">
+        <div class="blob blob1 absolute w-[500px] h-[500px] bg-[#3498db] rounded-full top-[-200px] left-[-200px] filter blur-3xl opacity-50"></div>
+        <div class="blob blob2 absolute w-[400px] h-[400px] bg-[#f5b7b1] rounded-full bottom-[-150px] right-[-150px] filter blur-3xl opacity-50"></div>
+        <div class="blob blob3 absolute w-[350px] h-[350px] bg-[#fdebd0] rounded-full bottom-[50px] left-[100px] filter blur-3xl opacity-50"></div>
     </div>
 
-    <div class="page-wrapper">
-        <header>
-            <nav>
-                <div class="logo">Ecoluz</div>
-                <div class="nav-links">
-                    <a href="#beneficios">Beneficios</a>
-                    <a href="#funciona">Cómo Funciona</a>
-                    <a href="#contacto">Contacto</a>
+    <div class="page-wrapper relative z-[2]">
+        <header class="sticky top-5 mx-5 z-10">
+            <nav class="flex justify-between items-center py-4 px-8 bg-[rgba(255,255,255,0.7)] backdrop-blur-md border border-[rgba(255,255,255,0.3)] rounded-full shadow-lg">
+                <div class="logo font-bold text-2xl">Ecoluz</div>
+                <div class="nav-links hidden md:block">
+                    <a href="#producto" class="ml-5 font-medium transition-colors hover:text-[#3498db]">El Producto</a>
+                    <a href="#about" class="ml-5 font-medium transition-colors hover:text-[#3498db]">Nosotros</a>
+                    <a href="#faq" class="ml-5 font-medium transition-colors hover:text-[#3498db]">Preguntas</a>
+                    <a href="#contacto" class="ml-5 font-medium transition-colors hover:text-[#3498db]">Contacto</a>
                 </div>
             </nav>
         </header>
 
         <main>
-            <section class="hero-section content-section">
-                <h1>Luz natural y gratuita para todos tus ambientes.</h1>
-                <p>Nuestro sistema transporta la luz del sol al interior de tu hogar, creando espacios más amplios, agradables y saludables.</p>
-                <a href="#contacto" class="cta-button">Solicitá tu Presupuesto</a>
+            <section class="hero-section min-h-[80vh] flex flex-col justify-center items-center text-center px-5 pt-[240px] pb-48">
+                <h1 class="text-4xl sm:text-5xl lg:text-7xl font-bold leading-tight mb-5 max-w-4xl">Luz natural y gratuita para todos tus ambientes.</h1>
+                <p class="text-lg sm:text-xl max-w-2xl mb-8 text-gray-600">Nuestro sistema transporta la luz del sol al interior de tu hogar, creando espacios más amplios, agradables y saludables.</p>
+                <a href="#contacto" class="cta-button bg-[#3498db] text-white no-underline py-4 px-9 rounded-[20px] font-medium text-[1.1rem] transition-all hover:-translate-y-1 hover:shadow-xl">Solicitá tu Presupuesto</a>
             </section>
 
-            <section id="beneficios" class="content-section">
-                <h2>La solución definitiva en iluminación</h2>
-                <div class="cards-container">
-                    <div class="card">
-                        <h3>Ahorro y Bienestar</h3>
+            <section id="producto" class="content-section py-20 px-5 pb-10">
+                <h2 class="text-3xl sm:text-4xl text-center mb-16 font-bold">La solución definitiva en iluminación</h2>
+                <div class="cards-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                    <div class="card bg-[rgba(255,255,255,0.5)] backdrop-blur-lg border border-[rgba(255,255,255,0.3)] rounded-2xl p-8 shadow-md transition-transform hover:-translate-y-2">
+                        <h3 class="text-2xl font-bold mb-4">Ahorro y Bienestar</h3>
                         <p>Iluminá tus ambientes con luz solar sin costo, reduciendo tu consumo eléctrico y creando espacios más saludables y productivos.</p>
                     </div>
-                    <div class="card">
-                        <h3>Instalación Rápida y Segura</h3>
+                    <div class="card bg-[rgba(255,255,255,0.5)] backdrop-blur-lg border border-[rgba(255,255,255,0.3)] rounded-2xl p-8 shadow-md transition-transform hover:-translate-y-2">
+                        <h3 class="text-2xl font-bold mb-4">Instalación Rápida y Segura</h3>
                         <p>Nuestro sistema se adapta a todo tipo de techos (losa, chapa, teja). Instalamos de forma prolija, garantizando cero filtraciones.</p>
                     </div>
-                    <div class="card">
-                        <h3>Calidad sin Mantenimiento</h3>
+                    <div class="card bg-[rgba(255,255,255,0.5)] backdrop-blur-lg border border-[rgba(255,255,255,0.3)] rounded-2xl p-8 shadow-md transition-transform hover:-translate-y-2">
+                        <h3 class="text-2xl font-bold mb-4">Calidad sin Mantenimiento</h3>
                         <p>Fabricados en Argentina desde 2001 con materiales de primera calidad que aseguran máxima durabilidad y no requieren mantenimiento.</p>
                     </div>
                 </div>
             </section>
 
-            <section id="funciona" class="content-section">
-                <h2>¿Cómo Funciona?</h2>
-                <div class="how-it-works-container">
+            <section id="funciona" class="content-section py-20 px-5 pt-10">
+                <h2 class="text-3xl sm:text-4xl text-center mb-16 font-bold">¿Cómo Funciona?</h2>
+                <div class="how-it-works-container grid grid-cols-1 md:grid-cols-3 gap-10 max-w-6xl mx-auto text-center">
                     <div class="step">
-                        <img src="https://placehold.co/100x100/3498db/ffffff?text=1" alt="Icono de captación de luz" class="step-icon" style="border-radius: 50%;">
-                        <h3>1. Captación</h3>
+                        <div class="step-icon w-20 h-20 mx-auto mb-5 rounded-full bg-[#3498db] text-white flex items-center justify-center text-3xl font-bold">1</div>
+                        <h3 class="text-2xl font-bold mb-2">Captación</h3>
                         <p>Un domo de acrílico de alto impacto en el techo capta la luz solar desde cualquier ángulo, durante todo el día.</p>
                     </div>
                     <div class="step">
-                        <img src="https://placehold.co/100x100/3498db/ffffff?text=2" alt="Icono de transporte de luz" class="step-icon" style="border-radius: 50%;">
-                        <h3>2. Transporte</h3>
+                        <div class="step-icon w-20 h-20 mx-auto mb-5 rounded-full bg-[#3498db] text-white flex items-center justify-center text-3xl font-bold">2</div>
+                        <h3 class="text-2xl font-bold mb-2">Transporte</h3>
                         <p>La luz viaja a través de un tubo con un interior espejado de máxima reflectividad, conservando su intensidad y pureza.</p>
                     </div>
                     <div class="step">
-                        <img src="https://placehold.co/100x100/3498db/ffffff?text=3" alt="Icono de difusión de luz" class="step-icon" style="border-radius: 50%;">
-                        <h3>3. Difusión</h3>
+                        <div class="step-icon w-20 h-20 mx-auto mb-5 rounded-full bg-[#3498db] text-white flex items-center justify-center text-3xl font-bold">3</div>
+                        <h3 class="text-2xl font-bold mb-2">Difusión</h3>
                         <p>Un difusor de policarbonato en el cielorraso distribuye la luz de forma pareja y agradable, iluminando todo el ambiente.</p>
                     </div>
                 </div>
             </section>
             
-            <section id="galeria" class="content-section">
-                <h2>Adaptable a tu Espacio</h2>
-                <div class="gallery-container">
-                    <div class="gallery-item">
-                        <img src="https://placehold.co/600x400/aed6f1/2c3e50?text=Cocina+Iluminada" alt="Claraboya en una cocina">
-                        <p>Cocinas</p>
+            <section id="about" class="content-section py-20 px-5 pb-10">
+                <h2 class="text-3xl sm:text-4xl text-center mb-16 font-bold">Conocé Ecoluz</h2>
+                <div class="about-us-card bg-[rgba(255,255,255,0.5)] backdrop-blur-lg border border-[rgba(255,255,255,0.3)] rounded-2xl p-10 max-w-4xl mx-auto mb-16 text-center shadow-md">
+                    <p class="text-lg">Desde 2001, en Ecoluz nos dedicamos a la fabricación de claraboyas de luz natural, respondiendo a las necesidades de arquitectos, constructores y clientes particulares. Nuestros productos superan en calidad y precio a las alternativas importadas, ofreciendo una solución nacional de primer nivel.</p>
+                </div>
+                <div class="gallery-container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-6xl mx-auto">
+                    <div class="gallery-item rounded-2xl overflow-hidden shadow-lg bg-[rgba(255,255,255,0.5)] backdrop-blur-lg border border-[rgba(255,255,255,0.3)]">
+                        <img src="https://placehold.co/600x400/aed6f1/2c3e50?text=Cocina+Iluminada" alt="Claraboya en una cocina" class="w-full h-64 object-cover">
+                        <p class="p-5 font-bold text-center">Cocinas</p>
                     </div>
-                    <div class="gallery-item">
-                        <img src="https://placehold.co/600x400/f5b7b1/2c3e50?text=Pasillo+con+Luz" alt="Claraboya en un pasillo">
-                        <p>Pasillos y Escaleras</p>
+                    <div class="gallery-item rounded-2xl overflow-hidden shadow-lg bg-[rgba(255,255,255,0.5)] backdrop-blur-lg border border-[rgba(255,255,255,0.3)]">
+                        <img src="https://placehold.co/600x400/f5b7b1/2c3e50?text=Pasillo+con+Luz" alt="Claraboya en un pasillo" class="w-full h-64 object-cover">
+                        <p class="p-5 font-bold text-center">Pasillos y Escaleras</p>
                     </div>
-                    <div class="gallery-item">
-                        <img src="https://placehold.co/600x400/fdebd0/2c3e50?text=Baño+Luminoso" alt="Claraboya en un baño">
-                        <p>Baños y Vestidores</p>
+                    <div class="gallery-item rounded-2xl overflow-hidden shadow-lg bg-[rgba(255,255,255,0.5)] backdrop-blur-lg border border-[rgba(255,255,255,0.3)]">
+                        <img src="https://placehold.co/600x400/fdebd0/2c3e50?text=Baño+Luminoso" alt="Claraboya en un baño" class="w-full h-64 object-cover">
+                        <p class="p-5 font-bold text-center">Baños y Vestidores</p>
                     </div>
                 </div>
             </section>
 
-            <section class="content-section">
-                <div class="about-us-section">
-                    <h2>Nuestra Trayectoria</h2>
-                    <p>Desde 2001, en Ecoluz nos dedicamos a la fabricación de claraboyas de luz natural, respondiendo a las necesidades de arquitectos, constructores y clientes particulares. Nuestros productos superan en calidad y precio a las alternativas importadas, ofreciendo una solución nacional de primer nivel.</p>
+            <section id="testimonios" class="testimonials-section py-20 pt-10">
+                <h2 class="text-3xl sm:text-4xl text-center mb-16 font-bold">Qué dicen nuestros clientes</h2>
+                <div class="scroller max-w-full overflow-hidden py-4">
+                    <div class="scroller-inner flex gap-5 w-max hover:[animation-play-state:paused]">
+                        <div class="card testimonial-card w-[350px] shrink-0 bg-[rgba(255,255,255,0.5)] backdrop-blur-lg border border-[rgba(255,255,255,0.3)] rounded-2xl p-8 shadow-md transition-transform hover:-translate-y-2"><p class="italic">"¡Increíble el cambio en mi cocina! Parece otro espacio, mucho más grande y luminoso. La instalación fue súper rápida."</p><p class="author font-bold mt-4 text-right">- María L., Vicente López</p></div>
+                        <div class="card testimonial-card w-[350px] shrink-0 bg-[rgba(255,255,255,0.5)] backdrop-blur-lg border border-[rgba(255,255,255,0.3)] rounded-2xl p-8 shadow-md transition-transform hover:-translate-y-2"><p class="italic">"Lo instalé en un pasillo que siempre estaba a oscuras. Ahora no prendo la luz en todo el día. Totalmente recomendable."</p><p class="author font-bold mt-4 text-right">- Juan C., Córdoba</p></div>
+                        <div class="card testimonial-card w-[350px] shrink-0 bg-[rgba(255,255,255,0.5)] backdrop-blur-lg border border-[rgba(255,255,255,0.3)] rounded-2xl p-8 shadow-md transition-transform hover:-translate-y-2"><p class="italic">"Excelente producto y atención. Se nota la calidad de los materiales. Superó mis expectativas."</p><p class="author font-bold mt-4 text-right">- Arq. Fernandez, Rosario</p></div>
+                        <div class="card testimonial-card w-[350px] shrink-0 bg-[rgba(255,255,255,0.5)] backdrop-blur-lg border border-[rgba(255,255,255,0.3)] rounded-2xl p-8 shadow-md transition-transform hover:-translate-y-2"><p class="italic">"Dudaba por el calor, pero no afecta en nada la temperatura. Solo entra luz pura. Muy conforme con la inversión."</p><p class="author font-bold mt-4 text-right">- Sofía G., Mendoza</p></div>
+                        <!-- Duplicamos para el efecto infinito -->
+                        <div class="card testimonial-card w-[350px] shrink-0 bg-[rgba(255,255,255,0.5)] backdrop-blur-lg border border-[rgba(255,255,255,0.3)] rounded-2xl p-8 shadow-md transition-transform hover:-translate-y-2"><p class="italic">"¡Increíble el cambio en mi cocina! Parece otro espacio, mucho más grande y luminoso. La instalación fue súper rápida."</p><p class="author font-bold mt-4 text-right">- María L., Vicente López</p></div>
+                        <div class="card testimonial-card w-[350px] shrink-0 bg-[rgba(255,255,255,0.5)] backdrop-blur-lg border border-[rgba(255,255,255,0.3)] rounded-2xl p-8 shadow-md transition-transform hover:-translate-y-2"><p class="italic">"Lo instalé en un pasillo que siempre estaba a oscuras. Ahora no prendo la luz en todo el día. Totalmente recomendable."</p><p class="author font-bold mt-4 text-right">- Juan C., Córdoba</p></div>
+                        <div class="card testimonial-card w-[350px] shrink-0 bg-[rgba(255,255,255,0.5)] backdrop-blur-lg border border-[rgba(255,255,255,0.3)] rounded-2xl p-8 shadow-md transition-transform hover:-translate-y-2"><p class="italic">"Excelente producto y atención. Se nota la calidad de los materiales. Superó mis expectativas."</p><p class="author font-bold mt-4 text-right">- Arq. Fernandez, Rosario</p></div>
+                        <div class="card testimonial-card w-[350px] shrink-0 bg-[rgba(255,255,255,0.5)] backdrop-blur-lg border border-[rgba(255,255,255,0.3)] rounded-2xl p-8 shadow-md transition-transform hover:-translate-y-2"><p class="italic">"Dudaba por el calor, pero no afecta en nada la temperatura. Solo entra luz pura. Muy conforme con la inversión."</p><p class="author font-bold mt-4 text-right">- Sofía G., Mendoza</p></div>
+                    </div>
                 </div>
             </section>
 
-            <section id="contacto" class="content-section contact-section">
-                <h2>Solicitá tu Presupuesto</h2>
-                <form class="contact-form" onsubmit="event.preventDefault(); alert('Formulario enviado (demostración).');">
-                    <input type="text" name="name" placeholder="Tu Nombre" required>
-                    <input type="email" name="email" placeholder="Tu Correo Electrónico" required>
-                    <textarea name="message" rows="5" placeholder="Contanos sobre tu proyecto..." required></textarea>
-                    <button type="submit">Enviar Consulta</button>
-                </form>
+            <section id="faq" class="content-section py-20 px-5">
+                <h2 class="text-3xl sm:text-4xl text-center mb-16 font-bold">Preguntas Frecuentes</h2>
+                <div class="faq-container max-w-3xl mx-auto flex flex-col gap-4">
+                    <div class="faq-item bg-[rgba(255,255,255,0.5)] backdrop-blur-lg border border-[rgba(255,255,255,0.3)] rounded-xl overflow-hidden shadow-sm">
+                        <button class="faq-question w-full bg-none border-none text-left p-5 text-lg font-bold cursor-pointer flex justify-between items-center">
+                            <span>¿Qué pasa en los días nublados?</span>
+                        </button>
+                        <div class="faq-answer max-h-0 overflow-hidden"><p class="p-5 pt-0">Nuestro sistema está diseñado para aprovechar al máximo la luz diurna disponible. Aunque la intensidad será menor, seguirá iluminando el ambiente de forma notable.</p></div>
+                    </div>
+                    <div class="faq-item bg-[rgba(255,255,255,0.5)] backdrop-blur-lg border border-[rgba(255,255,255,0.3)] rounded-xl overflow-hidden shadow-sm">
+                        <button class="faq-question w-full bg-none border-none text-left p-5 text-lg font-bold cursor-pointer flex justify-between items-center">
+                            <span>¿Se pueden instalar en techos de losa?</span>
+                        </button>
+                        <div class="faq-answer max-h-0 overflow-hidden"><p class="p-5 pt-0">¡Sí! Nuestro sistema es totalmente versátil y se adapta a cualquier tipo de techo: losa, chapa, teja, etc. Garantizamos una impermeabilización perfecta.</p></div>
+                    </div>
+                    <div class="faq-item bg-[rgba(255,255,255,0.5)] backdrop-blur-lg border border-[rgba(255,255,255,0.3)] rounded-xl overflow-hidden shadow-sm">
+                        <button class="faq-question w-full bg-none border-none text-left p-5 text-lg font-bold cursor-pointer flex justify-between items-center">
+                            <span>¿Qué vida útil tienen los equipos?</span>
+                        </button>
+                        <div class="faq-answer max-h-0 overflow-hidden"><p class="p-5 pt-0">Utilizamos materiales de la más alta calidad, como acrílico de alto impacto y tubos espejados. Los equipos están diseñados para durar décadas sin mantenimiento.</p></div>
+                    </div>
+                    <div class="faq-item bg-[rgba(255,255,255,0.5)] backdrop-blur-lg border border-[rgba(255,255,255,0.3)] rounded-xl overflow-hidden shadow-sm">
+                        <button class="faq-question w-full bg-none border-none text-left p-5 text-lg font-bold cursor-pointer flex justify-between items-center">
+                            <span>¿Afectan el calor en verano?</span>
+                        </button>
+                        <div class="faq-answer max-h-0 overflow-hidden"><p class="p-5 pt-0">No. El sistema está diseñado para transportar la luz, no el calor. El domo y el difusor cuentan con filtros UV y propiedades aislantes que impiden la transferencia de calor.</p></div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="contacto" class="content-section py-20 px-5">
+                <div class="contact-section-inner bg-[rgba(255,255,255,0.8)] rounded-3xl p-5 sm:p-10 mx-0 sm:mx-5">
+                    <h2 class="text-3xl sm:text-4xl text-center mb-10 font-bold">Solicitá tu Presupuesto</h2>
+                    <form class="contact-form max-w-xl mx-auto grid gap-5">
+                        <input type="text" name="name" placeholder="Tu Nombre" required class="w-full p-4 rounded-xl border border-gray-300 bg-white text-base focus:outline-none focus:ring-2 focus:ring-[#3498db]">
+                        <input type="email" name="email" placeholder="Tu Correo Electrónico" required class="w-full p-4 rounded-xl border border-gray-300 bg-white text-base focus:outline-none focus:ring-2 focus:ring-[#3498db]">
+                        <textarea name="message" rows="5" placeholder="Contanos sobre tu proyecto..." required class="w-full p-4 rounded-xl border border-gray-300 bg-white text-base focus:outline-none focus:ring-2 focus:ring-[#3498db]"></textarea>
+                        <button type="submit" class="bg-[#3498db] text-white border-none py-4 px-8 rounded-xl text-lg font-bold cursor-pointer">Enviar Consulta</button>
+                    </form>
+                </div>
             </section>
         </main>
 
-        <footer>
+        <footer class="text-center py-10 px-5">
             <p>&copy; 2025 Ecoluz. Todos los derechos reservados.</p>
-            <p class="footer-info">Atención: Lunes a Viernes de 8 a 18 hs, Sábados de 8 a 13 hs. | Envíos a todo el país.</p>
+            <p class="footer-info text-sm text-gray-600 mt-2">Atención: Lunes a Viernes de 8 a 18 hs, Sábados de 8 a 13 hs. | Envíos a todo el país.</p>
         </footer>
     </div>
+
+    <script>
+        // Script para el acordeón de FAQ
+        const faqItems = document.querySelectorAll('.faq-item');
+
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+                // Cerrar todos los items
+                faqItems.forEach(i => {
+                    i.classList.remove('active');
+                    i.querySelector('.faq-answer').style.maxHeight = '0';
+                });
+                // Abrir el item clickeado si no estaba activo
+                if (!isActive) {
+                    item.classList.add('active');
+                    const answer = item.querySelector('.faq-answer');
+                    answer.style.maxHeight = answer.scrollHeight + 'px';
+                }
+            });
+        });
+    </script>
 
 </body>
 </html>
