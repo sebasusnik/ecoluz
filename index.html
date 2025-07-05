@@ -78,8 +78,14 @@
             inset: 0;
             z-index: 0;
             backdrop-filter: blur(2px);
-            filter: url(#lg-dist);
             isolation: isolate;
+        }
+
+        /* Only apply SVG filter on larger screens for better mobile performance */
+        @media (min-width: 768px) {
+            .glass-filter {
+                filter: url(#lg-dist);
+            }
         }
 
         .glass-overlay {
