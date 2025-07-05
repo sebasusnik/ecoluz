@@ -56,6 +56,10 @@
     transition: max-height 0.5s ease, padding 0.5s ease;
 }
 
+.content-section {
+  scroll-margin-top: 4rem; /* 96px */
+}
+
 /* Estilo para navegación activa */
 .nav-item.active {
     color: #3498db;
