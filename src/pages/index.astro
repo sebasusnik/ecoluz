@@ -1,0 +1,629 @@
+---
+import { ArrowUp, Lightbulb, Building, HelpCircle, Mail } from "lucide-astro";
+import "../styles/global.css";
+---
+
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>ecoluz - Diseño Moderno con Tailwind CSS</title>
+	</head>
+	<body class="bg-[#f4f7f9] text-[#2c3e50] font-[Helvetica,Arial,sans-serif] overflow-x-hidden">
+		<div class="background-container fixed top-0 left-0 w-full h-full overflow-hidden -z-10">
+			<div
+				class="blob blob1 absolute w-[500px] h-[500px] bg-[#3498db] rounded-full top-[-200px] left-[-200px] filter blur-3xl opacity-50"
+			>
+			</div>
+			<div
+				class="blob blob2 absolute w-[400px] h-[400px] bg-[#f5b7b1] rounded-full bottom-[-150px] right-[-150px] filter blur-3xl opacity-50"
+			>
+			</div>
+			<div
+				class="blob blob3 absolute w-[350px] h-[350px] bg-[#fdebd0] rounded-full bottom-[50px] left-[100px] filter blur-3xl opacity-50"
+			>
+			</div>
+		</div>
+
+		<div class="page-wrapper relative z-[2]">
+			<header class="sticky top-5 mx-5 z-10">
+				<nav class="glass-container cursor-pointer md:cursor-default" id="top-navbar">
+					<div class="glass-filter"></div>
+					<div class="glass-overlay"></div>
+					<div class="glass-specular-subtle"></div>
+					<div class="glass-content glass-content--nav">
+						<div class="logo font-bold text-3xl cursor-pointer" id="top-logo">ecoluz</div>
+						<div class="nav-links hidden md:block">
+							<a href="#producto" class="ml-5 font-medium transition-colors hover:text-[#3498db] cursor-pointer">
+								El Producto
+							</a>
+							<a href="#about" class="ml-5 font-medium transition-colors hover:text-[#3498db] cursor-pointer">
+								Nosotros
+							</a>
+							<a href="#faq" class="ml-5 font-medium transition-colors hover:text-[#3498db] cursor-pointer">
+								Preguntas
+							</a>
+							<a href="#contacto" class="ml-5 font-medium transition-colors hover:text-[#3498db] cursor-pointer">
+								Contacto
+							</a>
+						</div>
+						<!-- Arrow indicator for mobile scroll to top -->
+						<div id="scroll-chevron" class="md:hidden opacity-0 transition-opacity duration-300">
+							<ArrowUp class="w-5 h-5 text-[#3498db]" />
+						</div>
+					</div>
+				</nav>
+			</header>
+
+			<main>
+				<section class="hero-section min-h-[80vh] flex flex-col justify-center items-center text-center px-5 pt-20 md:pt-32 pb-20 md:pb-48">
+					<h1 class="text-4xl sm:text-5xl lg:text-7xl font-bold leading-tight mb-5 max-w-4xl">
+						Luz natural y gratuita para todos tus ambientes.
+					</h1>
+					<p class="text-lg sm:text-xl max-w-2xl mb-8 text-gray-600">
+						Nuestro sistema transporta la luz del sol al interior de tu hogar, creando espacios más amplios, agradables y
+						saludables.
+					</p>
+					<a
+						href="#contacto"
+						class="cta-button bg-[#3498db] text-white no-underline py-4 px-9 rounded-[20px] font-medium text-[1.1rem] transition-all hover:-translate-y-1 hover:shadow-xl"
+					>
+						Solicitá tu Presupuesto
+					</a>
+				</section>
+
+				<section id="producto" class="content-section py-20 px-5 pb-10">
+					<h2 class="text-3xl sm:text-4xl text-center mb-16 font-bold">La solución definitiva en iluminación</h2>
+					<div class="cards-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+						<div
+							class="card bg-[rgba(255,255,255,0.5)] backdrop-blur-lg border border-[rgba(255,255,255,0.3)] rounded-2xl p-8 shadow-md transition-transform hover:-translate-y-2"
+						>
+							<h3 class="text-2xl font-bold mb-4">Ahorro y Bienestar</h3>
+							<p>
+								Iluminá tus ambientes con luz solar sin costo, reduciendo tu consumo eléctrico y creando espacios más
+								saludables y productivos.
+							</p>
+						</div>
+						<div
+							class="card bg-[rgba(255,255,255,0.5)] backdrop-blur-lg border border-[rgba(255,255,255,0.3)] rounded-2xl p-8 shadow-md transition-transform hover:-translate-y-2"
+						>
+							<h3 class="text-2xl font-bold mb-4">Instalación Rápida y Segura</h3>
+							<p>
+								Nuestro sistema se adapta a todo tipo de techos (losa, chapa, teja). Instalamos de forma prolija,
+								garantizando cero filtraciones.
+							</p>
+						</div>
+						<div
+							class="card bg-[rgba(255,255,255,0.5)] backdrop-blur-lg border border-[rgba(255,255,255,0.3)] rounded-2xl p-8 shadow-md transition-transform hover:-translate-y-2"
+						>
+							<h3 class="text-2xl font-bold mb-4">Calidad sin Mantenimiento</h3>
+							<p>
+								Fabricados en Argentina desde 2001 con materiales de primera calidad que aseguran máxima durabilidad y no
+								requieren mantenimiento.
+							</p>
+						</div>
+					</div>
+				</section>
+
+				<section id="funciona" class="content-section py-20 px-5 pt-10">
+					<h2 class="text-3xl sm:text-4xl text-center mb-16 font-bold">¿Cómo Funciona?</h2>
+					<div class="how-it-works-container grid grid-cols-1 md:grid-cols-3 gap-10 max-w-6xl mx-auto text-center">
+						<div class="step">
+							<div
+								class="step-icon w-20 h-20 mx-auto mb-5 rounded-full bg-[#3498db] text-white flex items-center justify-center text-3xl font-bold"
+							>
+								1
+							</div>
+							<h3 class="text-2xl font-bold mb-2">Captación</h3>
+							<p>
+								Un domo de acrílico de alto impacto en el techo capta la luz solar desde cualquier ángulo, durante todo el
+								día.
+							</p>
+						</div>
+						<div class="step">
+							<div
+								class="step-icon w-20 h-20 mx-auto mb-5 rounded-full bg-[#3498db] text-white flex items-center justify-center text-3xl font-bold"
+							>
+								2
+							</div>
+							<h3 class="text-2xl font-bold mb-2">Transporte</h3>
+							<p>
+								La luz viaja a través de un tubo con un interior espejado de máxima reflectividad, conservando su intensidad y
+								pureza.
+							</p>
+						</div>
+						<div class="step">
+							<div
+								class="step-icon w-20 h-20 mx-auto mb-5 rounded-full bg-[#3498db] text-white flex items-center justify-center text-3xl font-bold"
+							>
+								3
+							</div>
+							<h3 class="text-2xl font-bold mb-2">Difusión</h3>
+							<p>
+								Un difusor de policarbonato en el cielorraso distribuye la luz de forma pareja y agradable, iluminando todo el
+								ambiente.
+							</p>
+						</div>
+					</div>
+				</section>
+
+				<section id="specs" class="content-section py-20 px-5 pt-10">
+					<div
+						class="about-us-card bg-[rgba(255,255,255,0.5)] backdrop-blur-lg border border-[rgba(255,255,255,0.3)] rounded-2xl p-10 max-w-4xl mx-auto text-center shadow-md"
+					>
+						<h2 class="text-3xl sm:text-4xl text-center mb-4 font-bold">Información Técnica</h2>
+						<p class="text-lg mb-8">
+							Para arquitectos, constructores y profesionales. Descargá el PDF con todas las especificaciones, diámetros,
+							materiales y detalles de instalación de nuestros productos.
+						</p>
+						<a
+							href="#"
+							class="cta-button bg-[#2c3e50] text-white no-underline py-4 px-9 rounded-[15px] font-medium text-[1.1rem] transition-all hover:-translate-y-1 hover:shadow-xl"
+						>
+							Descargar Ficha Técnica
+						</a>
+					</div>
+				</section>
+
+				<section id="about" class="content-section py-20 px-5 pb-10">
+					<h2 class="text-3xl sm:text-4xl text-center mb-16 font-bold">Conocé Ecoluz</h2>
+					<div
+						class="about-us-card bg-[rgba(255,255,255,0.5)] backdrop-blur-lg border border-[rgba(255,255,255,0.3)] rounded-2xl p-10 max-w-4xl mx-auto mb-16 text-center shadow-md"
+					>
+						<p class="text-lg">
+							Desde 2001, en Ecoluz nos dedicamos a la fabricación de claraboyas de luz natural, respondiendo a las
+							necesidades de arquitectos, constructores y clientes particulares. Nuestros productos superan en calidad y precio
+							a las alternativas importadas, ofreciendo una solución nacional de primer nivel.
+						</p>
+					</div>
+					<div class="gallery-container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-6xl mx-auto">
+						<div
+							class="gallery-item rounded-2xl overflow-hidden shadow-lg bg-[rgba(255,255,255,0.5)] backdrop-blur-lg border border-[rgba(255,255,255,0.3)]"
+						>
+							<img
+								src="https://placehold.co/600x400/aed6f1/2c3e50?text=Cocina+Iluminada"
+								alt="Claraboya en una cocina"
+								class="w-full h-64 object-cover"
+							/>
+							<p class="p-5 font-bold text-center">Cocinas</p>
+						</div>
+						<div
+							class="gallery-item rounded-2xl overflow-hidden shadow-lg bg-[rgba(255,255,255,0.5)] backdrop-blur-lg border border-[rgba(255,255,255,0.3)]"
+						>
+							<img
+								src="https://placehold.co/600x400/f5b7b1/2c3e50?text=Pasillo+con+Luz"
+								alt="Claraboya en un pasillo"
+								class="w-full h-64 object-cover"
+							/>
+							<p class="p-5 font-bold text-center">Pasillos y Escaleras</p>
+						</div>
+						<div
+							class="gallery-item rounded-2xl overflow-hidden shadow-lg bg-[rgba(255,255,255,0.5)] backdrop-blur-lg border border-[rgba(255,255,255,0.3)]"
+						>
+							<img
+								src="https://placehold.co/600x400/fdebd0/2c3e50?text=Baño+Luminoso"
+								alt="Claraboya en un baño"
+								class="w-full h-64 object-cover"
+							/>
+							<p class="p-5 font-bold text-center">Baños y Vestidores</p>
+						</div>
+					</div>
+				</section>
+
+				<section id="testimonios" class="testimonials-section py-20 pt-10">
+					<h2 class="text-3xl sm:text-4xl text-center mb-16 font-bold">Qué dicen nuestros clientes</h2>
+					<div class="scroller max-w-full overflow-hidden py-4">
+						<div class="scroller-inner flex gap-5 w-max hover:[animation-play-state:paused]">
+							<div
+								class="card testimonial-card w-[350px] shrink-0 bg-[rgba(255,255,255,0.5)] backdrop-blur-lg border border-[rgba(255,255,255,0.3)] rounded-2xl p-8 shadow-md transition-transform hover:-translate-y-2"
+							>
+								<p class="italic">
+									"¡Increíble el cambio en mi cocina! Parece otro espacio, mucho más grande y luminoso. La instalación fue
+									súper rápida."
+								</p>
+								<p class="author font-bold mt-4 text-right">- María L., Vicente López</p>
+							</div>
+							<div
+								class="card testimonial-card w-[350px] shrink-0 bg-[rgba(255,255,255,0.5)] backdrop-blur-lg border border-[rgba(255,255,255,0.3)] rounded-2xl p-8 shadow-md transition-transform hover:-translate-y-2"
+							>
+								<p class="italic">
+									"Lo instalé en un pasillo que siempre estaba a oscuras. Ahora no prendo la luz en todo el día. Totalmente
+									recomendable."
+								</p>
+								<p class="author font-bold mt-4 text-right">- Juan C., Córdoba</p>
+							</div>
+							<div
+								class="card testimonial-card w-[350px] shrink-0 bg-[rgba(255,255,255,0.5)] backdrop-blur-lg border border-[rgba(255,255,255,0.3)] rounded-2xl p-8 shadow-md transition-transform hover:-translate-y-2"
+							>
+								<p class="italic">"Excelente producto y atención. Se nota la calidad de los materiales. Superó mis expectativas."</p>
+								<p class="author font-bold mt-4 text-right">- Arq. Fernandez, Rosario</p>
+							</div>
+							<div
+								class="card testimonial-card w-[350px] shrink-0 bg-[rgba(255,255,255,0.5)] backdrop-blur-lg border border-[rgba(255,255,255,0.3)] rounded-2xl p-8 shadow-md transition-transform hover:-translate-y-2"
+							>
+								<p class="italic">
+									"Dudaba por el calor, pero no afecta en nada la temperatura. Solo entra luz pura. Muy conforme con la
+									inversión."
+								</p>
+								<p class="author font-bold mt-4 text-right">- Sofía G., Mendoza</p>
+							</div>
+							<!-- Duplicamos para el efecto infinito -->
+							<div
+								class="card testimonial-card w-[350px] shrink-0 bg-[rgba(255,255,255,0.5)] backdrop-blur-lg border border-[rgba(255,255,255,0.3)] rounded-2xl p-8 shadow-md transition-transform hover:-translate-y-2"
+							>
+								<p class="italic">
+									"¡Increíble el cambio en mi cocina! Parece otro espacio, mucho más grande y luminoso. La instalación fue
+									súper rápida."
+								</p>
+								<p class="author font-bold mt-4 text-right">- María L., Vicente López</p>
+							</div>
+							<div
+								class="card testimonial-card w-[350px] shrink-0 bg-[rgba(255,255,255,0.5)] backdrop-blur-lg border border-[rgba(255,255,255,0.3)] rounded-2xl p-8 shadow-md transition-transform hover:-translate-y-2"
+							>
+								<p class="italic">
+									"Lo instalé en un pasillo que siempre estaba a oscuras. Ahora no prendo la luz en todo el día. Totalmente
+									recomendable."
+								</p>
+								<p class="author font-bold mt-4 text-right">- Juan C., Córdoba</p>
+							</div>
+							<div
+								class="card testimonial-card w-[350px] shrink-0 bg-[rgba(255,255,255,0.5)] backdrop-blur-lg border border-[rgba(255,255,255,0.3)] rounded-2xl p-8 shadow-md transition-transform hover:-translate-y-2"
+							>
+								<p class="italic">"Excelente producto y atención. Se nota la calidad de los materiales. Superó mis expectativas."</p>
+								<p class="author font-bold mt-4 text-right">- Arq. Fernandez, Rosario</p>
+							</div>
+							<div
+								class="card testimonial-card w-[350px] shrink-0 bg-[rgba(255,255,255,0.5)] backdrop-blur-lg border border-[rgba(255,255,255,0.3)] rounded-2xl p-8 shadow-md transition-transform hover:-translate-y-2"
+							>
+								<p class="italic">
+									"Dudaba por el calor, pero no afecta en nada la temperatura. Solo entra luz pura. Muy conforme con la
+									inversión."
+								</p>
+								<p class="author font-bold mt-4 text-right">- Sofía G., Mendoza</p>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<section id="faq" class="content-section py-20 px-5">
+					<h2 class="text-3xl sm:text-4xl text-center mb-16 font-bold">Preguntas Frecuentes</h2>
+					<div class="faq-container max-w-3xl mx-auto flex flex-col gap-4">
+						<div
+							class="faq-item bg-[rgba(255,255,255,0.5)] backdrop-blur-lg border border-[rgba(255,255,255,0.3)] rounded-xl overflow-hidden shadow-sm"
+						>
+							<button class="faq-question w-full bg-none border-none text-left p-5 text-lg font-bold cursor-pointer flex justify-between items-center">
+								<span>¿Qué pasa en los días nublados?</span>
+							</button>
+							<div class="faq-answer max-h-0 overflow-hidden">
+								<p class="p-5 pt-0">
+									Nuestro sistema está diseñado para aprovechar al máximo la luz diurna disponible. Aunque la intensidad será
+									menor, seguirá iluminando el ambiente de forma notable.
+								</p>
+							</div>
+						</div>
+						<div
+							class="faq-item bg-[rgba(255,255,255,0.5)] backdrop-blur-lg border border-[rgba(255,255,255,0.3)] rounded-xl overflow-hidden shadow-sm"
+						>
+							<button class="faq-question w-full bg-none border-none text-left p-5 text-lg font-bold cursor-pointer flex justify-between items-center">
+								<span>¿Se pueden instalar en techos de losa?</span>
+							</button>
+							<div class="faq-answer max-h-0 overflow-hidden">
+								<p class="p-5 pt-0">
+									¡Sí! Nuestro sistema es totalmente versátil y se adapta a cualquier tipo de techo: losa, chapa, teja, etc.
+									Garantizamos una impermeabilización perfecta.
+								</p>
+							</div>
+						</div>
+						<div
+							class="faq-item bg-[rgba(255,255,255,0.5)] backdrop-blur-lg border border-[rgba(255,255,255,0.3)] rounded-xl overflow-hidden shadow-sm"
+						>
+							<button class="faq-question w-full bg-none border-none text-left p-5 text-lg font-bold cursor-pointer flex justify-between items-center">
+								<span>¿Qué vida útil tienen los equipos?</span>
+							</button>
+							<div class="faq-answer max-h-0 overflow-hidden">
+								<p class="p-5 pt-0">
+									Utilizamos materiales de la más alta calidad, como acrílico de alto impacto y tubos espejados. Los equipos
+									están diseñados para durar décadas sin mantenimiento.
+								</p>
+							</div>
+						</div>
+						<div
+							class="faq-item bg-[rgba(255,255,255,0.5)] backdrop-blur-lg border border-[rgba(255,255,255,0.3)] rounded-xl overflow-hidden shadow-sm"
+						>
+							<button class="faq-question w-full bg-none border-none text-left p-5 text-lg font-bold cursor-pointer flex justify-between items-center">
+								<span>¿Afectan el calor en verano?</span>
+							</button>
+							<div class="faq-answer max-h-0 overflow-hidden">
+								<p class="p-5 pt-0">
+									No. El sistema está diseñado para transportar la luz, no el calor. El domo y el difusor cuentan con filtros
+									UV y propiedades aislantes que impiden la transferencia de calor.
+								</p>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<!--             <section id="calculadora" class="content-section py-20 px-5">
+              <div class="calculator-container bg-[rgba(255,255,255,0.5)] backdrop-blur-lg border border-[rgba(255,255,255,0.3)] rounded-2xl p-10 max-w-4xl mx-auto text-center shadow-md">
+                  <h2 class="text-3xl sm:text-4xl text-center mb-8 font-bold">Calculá tu Ahorro</h2>
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                      <div class="space-y-6">
+                          <div>
+                              <label for="ambientes" class="block font-bold mb-2">Cantidad de Ambientes</label>
+                              <input type="range" id="ambientes" min="1" max="10" value="3" class="w-full">
+                              <span id="ambientes-valor" class="text-xl font-bold text-[#3498db]">3</span>
+                          </div>
+                          <div>
+                              <label for="horas" class="block font-bold mb-2">Horas de Luz Artificial por Día</label>
+                              <input type="range" id="horas" min="1" max="12" value="6" class="w-full">
+                              <span id="horas-valor" class="text-xl font-bold text-[#3498db]">6 hs</span>
+                          </div>
+                      </div>
+                      <div class="savings-result text-center">
+                          <p class="text-lg">Tu ahorro mensual estimado es de</p>
+                          <p id="ahorro-total" class="text-5xl font-bold text-[#3498db] my-2">$0</p>
+                          <p class="text-sm text-gray-500">*Cálculo basado en un costo promedio de energía y lámparas de 60W.</p>
+                      </div>
+                  </div>
+              </div>
+          </section> -->
+
+				<section id="contacto" class="content-section py-20 px-5">
+					<div class="contact-section-inner bg-[rgba(255,255,255,0.8)] rounded-3xl p-5 sm:p-10 mx-0 sm:mx-5">
+						<h2 class="text-3xl sm:text-4xl text-center mb-10 font-bold">Solicitá tu Presupuesto</h2>
+						<form class="contact-form max-w-xl mx-auto grid gap-5">
+							<input
+								type="text"
+								name="name"
+								placeholder="Tu Nombre"
+								required
+								class="w-full p-4 rounded-xl border border-gray-300 bg-white text-base focus:outline-none focus:ring-2 focus:ring-[#3498db]"
+							/>
+							<input
+								type="email"
+								name="email"
+								placeholder="Tu Correo Electrónico"
+								required
+								class="w-full p-4 rounded-xl border border-gray-300 bg-white text-base focus:outline-none focus:ring-2 focus:ring-[#3498db]"
+							/>
+							<textarea
+								name="message"
+								rows="5"
+								placeholder="Contanos sobre tu proyecto..."
+								required
+								class="w-full p-4 rounded-xl border border-gray-300 bg-white text-base focus:outline-none focus:ring-2 focus:ring-[#3498db]"
+							></textarea>
+							<button
+								type="submit"
+								class="bg-[#3498db] text-white border-none py-4 px-8 rounded-xl text-lg font-bold cursor-pointer"
+							>
+								Enviar Consulta
+							</button>
+						</form>
+					</div>
+				</section>
+			</main>
+
+			<footer class="text-center py-10 px-5 pb-24 md:pb-10">
+				<p>&copy; 2025 Ecoluz. Todos los derechos reservados.</p>
+				<p class="footer-info text-sm text-gray-600 mt-2">
+					Atención: Lunes a Viernes de 8 a 18 hs, Sábados de 8 a 13 hs. | Envíos a todo el país.
+				</p>
+			</footer>
+		</div>
+
+		<!-- Navegación flotante inferior para mobile -->
+		<nav class="fixed bottom-5 left-5 right-5 z-50 md:hidden">
+			<div class="glass-container">
+				<div class="glass-filter"></div>
+				<div class="glass-overlay"></div>
+				<div class="glass-specular"></div>
+				<div class="glass-content glass-content--mobile-nav">
+					<a
+						href="#producto"
+						class="nav-item flex flex-col items-center p-2 transition-all duration-300 hover:text-[#3498db]"
+						data-target="producto"
+					>
+						<Lightbulb class="w-5 h-5 mb-1" />
+						<span class="text-xs font-medium">Producto</span>
+					</a>
+					<a
+						href="#about"
+						class="nav-item flex flex-col items-center p-2 transition-all duration-300 hover:text-[#3498db]"
+						data-target="about"
+					>
+						<Building class="w-5 h-5 mb-1" />
+						<span class="text-xs font-medium">Empresa</span>
+					</a>
+					<a
+						href="#faq"
+						class="nav-item flex flex-col items-center p-2 transition-all duration-300 hover:text-[#3498db]"
+						data-target="faq"
+					>
+						<HelpCircle class="w-5 h-5 mb-1" />
+						<span class="text-xs font-medium">FAQ</span>
+					</a>
+					<a
+						href="#contacto"
+						class="nav-item flex flex-col items-center p-2 transition-all duration-300 hover:text-[#3498db]"
+						data-target="contacto"
+					>
+						<Mail class="w-5 h-5 mb-1" />
+						<span class="text-xs font-medium">Contacto</span>
+					</a>
+				</div>
+			</div>
+		</nav>
+
+		<script>
+			// Script para el acordeón de FAQ
+			const faqItems = document.querySelectorAll(".faq-item");
+
+			faqItems.forEach((item) => {
+				const question = item.querySelector(".faq-question");
+				question.addEventListener("click", () => {
+					const isActive = item.classList.contains("active");
+					// Cerrar todos los items
+					faqItems.forEach((i) => {
+						i.classList.remove("active");
+						i.querySelector(".faq-answer").style.maxHeight = "0";
+					});
+					// Abrir el item clickeado si no estaba activo
+					if (!isActive) {
+						item.classList.add("active");
+						const answer = item.querySelector(".faq-answer");
+						answer.style.maxHeight = answer.scrollHeight + "px";
+					}
+				});
+			});
+
+			// Scroll to top functionality
+			const topNavbar = document.getElementById("top-navbar");
+			const topLogo = document.getElementById("top-logo");
+			const scrollChevron = document.getElementById("scroll-chevron");
+
+			// Function to scroll to top
+			function scrollToTop() {
+				window.scrollTo({
+					top: 0,
+					behavior: "smooth",
+				});
+			}
+
+			// Add click event to entire navbar (mobile only)
+			topNavbar.addEventListener("click", (e) => {
+				// Don't scroll to top if clicking on navigation links
+				if (e.target.tagName === "A" || e.target.closest("a")) {
+					return;
+				}
+
+				// Only scroll to top on mobile (screen width < 768px)
+				if (window.innerWidth < 768) {
+					scrollToTop();
+				}
+			});
+
+			// Add click event to logo (works on both desktop and mobile)
+			topLogo.addEventListener("click", scrollToTop);
+
+			// Add click event to chevron
+			scrollChevron.addEventListener("click", scrollToTop);
+
+			// Show/hide chevron based on scroll position
+			window.addEventListener("scroll", () => {
+				const scrollPosition = window.pageYOffset;
+				const showChevronThreshold = 300; // Show chevron after 300px scroll
+
+				if (scrollPosition > showChevronThreshold) {
+					scrollChevron.style.opacity = "1";
+				} else {
+					scrollChevron.style.opacity = "0";
+				}
+			});
+
+			// Sistema de navegación activa
+			const navItems = document.querySelectorAll(".nav-item");
+			const sections = document.querySelectorAll("section[id]");
+			let clickedTarget = null;
+			let clickTime = 0;
+
+			// Mapeo de secciones a nav items (incluyendo secciones intermedias)
+			const sectionToNavMap = {
+				producto: "producto",
+				funciona: "producto", // Asociar "¿Cómo funciona?" con Producto
+				specs: "producto", // Asociar "Información Técnica" con Producto
+				about: "about",
+				testimonios: "about", // Asociar "Testimonios" con Empresa
+				faq: "faq",
+				contacto: "contacto",
+			};
+
+			// Función para actualizar navegación activa
+			function updateActiveNav(targetId) {
+				navItems.forEach((item) => {
+					item.classList.remove("active");
+				});
+
+				const activeItem = document.querySelector(`[data-target="${targetId}"]`);
+				if (activeItem) {
+					activeItem.classList.add("active");
+				}
+			}
+
+			// Configurar Intersection Observer
+			const observerOptions = {
+				root: null,
+				rootMargin: "-30% 0px -50% 0px",
+				threshold: 0.2,
+			};
+
+			const observer = new IntersectionObserver((entries) => {
+				entries.forEach((entry) => {
+					if (entry.isIntersecting) {
+						const sectionId = entry.target.id;
+						const navTarget = sectionToNavMap[sectionId];
+
+						if (navTarget) {
+							const timeSinceClick = Date.now() - clickTime;
+
+							// Si acabamos de hacer click, solo permitir actualizaciones después de 800ms
+							// o si llegamos exactamente al target clickeado
+							if (clickedTarget === null || timeSinceClick > 800 || navTarget === clickedTarget) {
+								updateActiveNav(navTarget);
+
+								// Si llegamos al target clickeado, limpiar inmediatamente
+								if (navTarget === clickedTarget) {
+									clickedTarget = null;
+								}
+
+								// Limpiar el target después de un tiempo
+								if (timeSinceClick > 1200) {
+									clickedTarget = null;
+								}
+							}
+						}
+					}
+				});
+			}, observerOptions);
+
+			// Observar todas las secciones
+			sections.forEach((section) => {
+				observer.observe(section);
+			});
+
+			// Navegación suave al hacer click
+			navItems.forEach((item) => {
+				item.addEventListener("click", (e) => {
+					e.preventDefault();
+					const targetId = item.getAttribute("data-target");
+					const targetSection = document.getElementById(targetId);
+
+					if (targetSection) {
+						// Registrar el click
+						clickedTarget = targetId;
+						clickTime = Date.now();
+
+						// Actualizar inmediatamente la navegación activa
+						updateActiveNav(targetId);
+
+						// Hacer scroll suave
+						targetSection.scrollIntoView({
+							behavior: "smooth",
+							block: "start",
+						});
+					}
+				});
+			});
+		</script>
+
+		<!-- SVG FILTER DEFINITION for glass effect -->
+		<svg style="display: none">
+			<filter id="lg-dist" x="0%" y="0%" width="100%" height="100%">
+				<feTurbulence type="turbulence" baseFrequency="0.002 0.035" numOctaves="2" seed="42" result="noise"></feTurbulence>
+				<feGaussianBlur in="noise" stdDeviation="2" result="blurred"></feGaussianBlur>
+				<feDisplacementMap in="SourceGraphic" in2="blurred" scale="45" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap>
+			</filter>
+		</svg>
+	</body>
+</html>
+

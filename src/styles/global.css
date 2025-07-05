@@ -1,0 +1,154 @@
+@tailwind utilities;
+
+
+/* Glass effect variables */
+:root {
+    --lg-bg-color: rgba(255, 255, 255, 0.25);
+    --lg-highlight: rgba(255, 255, 255, 0.75);
+    --lg-text: #2c3e50;
+    --lg-hover-glow: rgba(255, 255, 255, 0.4);
+}
+
+/* Estilos personalizados que no pueden ser replicados fácilmente con Tailwind */
+@keyframes move {
+    from {
+        transform: translate(0, 0) rotate(0deg) scale(1);
+    }
+    to {
+        transform: translate(150px, 100px) rotate(120deg) scale(1.1);
+    }
+}
+
+.blob1 { animation: move 35s infinite alternate; }
+.blob2 { animation: move 40s infinite alternate-reverse; }
+.blob3 { animation: move 30s infinite alternate; }
+
+@keyframes scroll {
+    to {
+        transform: translateX(calc(-50% - 10px)); /* 10px es la mitad del gap */
+    }
+}
+.scroller-inner {
+    animation: scroll 40s linear infinite;
+}
+
+.faq-question::after {
+    content: '+';
+    transition: transform 0.3s ease;
+}
+.faq-item.active .faq-question::after {
+    transform: rotate(45deg);
+}
+.faq-answer {
+    transition: max-height 0.5s ease, padding 0.5s ease;
+}
+
+/* Estilo para navegación activa */
+.nav-item.active {
+    color: #3498db;
+    transform: scale(1.1);
+}
+
+.nav-item.active i {
+    color: #3498db;
+}
+
+/* Glass effect styles */
+.glass-container {
+    position: relative;
+    display: flex;
+    font-weight: 600;
+    color: var(--lg-text);
+    background: transparent;
+    border-radius: 2rem;
+    border: 1px solid rgba(52, 152, 219, 0.15);
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 0 6px rgba(0, 0, 0, 0.05);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 2.2);
+}
+
+.glass-filter {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    backdrop-filter: blur(2px);
+    isolation: isolate;
+}
+
+/* Only apply SVG filter on larger screens for better mobile performance */
+@media (min-width: 768px) {
+    .glass-filter {
+        filter: url(#lg-dist);
+    }
+}
+
+.glass-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(180deg, 
+        rgba(255, 255, 255, 0.28) 0%, 
+        rgba(255, 255, 255, 0.22) 25%, 
+        rgba(255, 255, 255, 0.2) 50%, 
+        rgba(255, 255, 255, 0.22) 75%, 
+        rgba(255, 255, 255, 0.26) 100%);
+    backdrop-filter: blur(6px);
+}
+
+.glass-specular {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    border-radius: inherit;
+    overflow: hidden;
+    background: linear-gradient(180deg, 
+        rgba(255, 255, 255, 0.3) 0%, 
+        rgba(255, 255, 255, 0.08) 20%, 
+        rgba(255, 255, 255, 0.05) 40%, 
+        rgba(255, 255, 255, 0.05) 60%, 
+        rgba(255, 255, 255, 0.08) 80%, 
+        rgba(255, 255, 255, 0.25) 100%);
+    box-shadow: inset 1px 1px 0 var(--lg-highlight),
+        inset 0 0 5px var(--lg-highlight),
+        inset 0 -2px 8px rgba(255, 255, 255, 0.15),
+        inset 0 2px 8px rgba(255, 255, 255, 0.2);
+}
+
+.glass-specular-subtle {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    border-radius: inherit;
+    overflow: hidden;
+    background: linear-gradient(180deg, 
+        rgba(255, 255, 255, 0.15) 0%, 
+        rgba(255, 255, 255, 0.04) 20%, 
+        rgba(255, 255, 255, 0.02) 40%, 
+        rgba(255, 255, 255, 0.02) 60%, 
+        rgba(255, 255, 255, 0.04) 80%, 
+        rgba(255, 255, 255, 0.12) 100%);
+    box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.4),
+        inset 0 0 5px rgba(255, 255, 255, 0.3),
+        inset 0 -2px 8px rgba(255, 255, 255, 0.08),
+        inset 0 2px 8px rgba(255, 255, 255, 0.1);
+}
+
+.glass-content {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 1rem 2rem;
+}
+
+.glass-content--nav {
+    justify-content: space-between;
+}
+
+.glass-content--mobile-nav {
+    justify-content: space-between;
+    padding: 0.75rem 1rem;
+}
+
+@import "tailwindcss";

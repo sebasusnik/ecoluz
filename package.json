@@ -1,0 +1,17 @@
+{
+  "name": "ecoluz",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev --host",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.1.11",
+    "astro": "^5.11.0",
+    "lucide-astro": "^0.525.0",
+    "tailwindcss": "^4.1.11"
+  }
+}
